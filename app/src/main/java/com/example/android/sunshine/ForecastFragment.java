@@ -32,6 +32,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -142,6 +143,8 @@ public class ForecastFragment extends Fragment {
 
             String format = "json";
             String units = "metric";
+            Locale currentLocale = getResources().getConfiguration().locale;
+            String language = currentLocale.getLanguage();
             int numDays = 7;
 
             try {
@@ -152,12 +155,14 @@ public class ForecastFragment extends Fragment {
                 final String QUERY_PARAM = "q";
                 final String FORMAT_PARAM = "mode";
                 final String UNITS_PARAM = "units";
+                final String LANG_PARAM = "lang";
                 final String DAYS_PARAM = "cnt";
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .appendQueryParameter(QUERY_PARAM, params[0])
                         .appendQueryParameter(FORMAT_PARAM, format)
                         .appendQueryParameter(UNITS_PARAM, units)
+                        .appendQueryParameter(LANG_PARAM, language)
                         .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
                         .build();
 
