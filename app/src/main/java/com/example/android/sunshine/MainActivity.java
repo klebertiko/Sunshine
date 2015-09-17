@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Show user preferred location on map with implicit intent
+     */
     private void openPreferredLocationInMap() {
         SharedPreferences sharedPrefs =
                 PreferenceManager.getDefaultSharedPreferences(this);
