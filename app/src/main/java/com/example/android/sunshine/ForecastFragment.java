@@ -146,6 +146,7 @@ public class ForecastFragment extends Fragment {
             Locale currentLocale = getResources().getConfiguration().locale;
             String language = currentLocale.getLanguage();
             int numDays = 7;
+            String appid = "bd82977b86bf27fb59a04b61b657fb6f";
 
             try {
                 // Construct the URL for the OpenWeatherMap query
@@ -157,6 +158,7 @@ public class ForecastFragment extends Fragment {
                 final String UNITS_PARAM = "units";
                 final String LANG_PARAM = "lang";
                 final String DAYS_PARAM = "cnt";
+                final String APPID_PARAM = "appid";
 
                 Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
                         .appendQueryParameter(QUERY_PARAM, params[0])
@@ -164,6 +166,7 @@ public class ForecastFragment extends Fragment {
                         .appendQueryParameter(UNITS_PARAM, units)
                         .appendQueryParameter(LANG_PARAM, language)
                         .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+                        .appendQueryParameter(APPID_PARAM, appid)
                         .build();
 
                 URL url = new URL(builtUri.toString());
